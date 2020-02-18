@@ -40,9 +40,6 @@ feautures, targets = rearrange_csv_data(raw_data) #gets the columns we want from
 
 xTrain, xTest, yTrain, yTest = train_test_split(feautures, targets, random_state=7) #
 
-example = xTrain[1]
-exampleY = yTrain[1]
-
 #all of the following models were tried and the one that preforms best, the Random Forest decision tree, was left uncommented
 #model = KNeighborsRegressor(n_neighbors=2)
 #model = LinearRegression()
@@ -62,10 +59,17 @@ print(model.best_params_)
 print(model.score(xTest, yTest))
 '''
 
-
 model.fit(xTrain, yTrain)
 predictions = model.predict(xTest)
 actual = yTest
+
+for prediction in range(len(predictions)):
+    print('Predicted: ' + str(predictions[prediction]))
+    print('Actual: ' + str(predictions[prediction]))
+    print(' ')
+
+
+
 
 print(model.score(xTrain, yTrain))
 print(model.score(xTest, yTest))
@@ -76,4 +80,8 @@ def rate_rollercoaster(max_speed,avg_speed,ride_time,ride_length,max_pos_gs,max_
     data = [[max_speed,avg_speed,ride_time,ride_length,max_pos_gs,max_neg_gs,max_lateral_gs,total_air_time,drops,highest_drop_height,inversions]]
     return model.predict(data)
 
+def rate_rollercoaster_from_list(data):
+    return model.predict([data])
+
 print(rate_rollercoaster(31,11,70,1591,3.13,-1.7,2.15,1.44,11,22,0))
+
