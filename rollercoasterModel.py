@@ -34,11 +34,11 @@ def rearrange_csv_data(dataList):
 
     return np.array(features), np.array(targets)
 
-feautures, targets = rearrange_csv_data(raw_data) #gets the columns we want from the csv file and
+features, targets = rearrange_csv_data(raw_data) #gets the columns we want from the csv file and
 #a list of features in order: [max_speed,avg_speed,ride_time,ride_length,max_pos_gs,max_neg_gs,max_lateral_gs,total_air_time,drops,highest_drop_height,inversions]
 #the target is the excitement column from the csv
 
-xTrain, xTest, yTrain, yTest = train_test_split(feautures, targets, random_state=7) #
+xTrain, xTest, yTrain, yTest = train_test_split(features, targets, random_state=7) #
 
 #all of the following models were tried and the one that preforms best, the Random Forest decision tree, was left uncommented
 #model = KNeighborsRegressor(n_neighbors=2)
